@@ -1,0 +1,21 @@
+<table matSort (matSortChange)="sortData($event)">
+  <tr>
+    <th *ngFor="let coluna of colunas" [mat-sort-header]="coluna.sortHeader">{{coluna.nome}}</th>
+  </tr>
+
+  <tr *ngFor="let dessert of sortedData">
+    <td *ngFor="let coluna of colunas">
+      <ng-template appComponenteInjetavel 
+        [component]="coluna.componenteCelula" 
+        [conteudoExibicao]="dessert[atributoExibicaoColuna[coluna.nome]]" 
+        [atribuirConteudo]="coluna.funcaoAtribuicao"
+      ></ng-template>
+    </td>
+    
+  </tr>
+</table>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
